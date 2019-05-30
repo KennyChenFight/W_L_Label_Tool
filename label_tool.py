@@ -13,17 +13,17 @@ class AppWindow(QMainWindow):
         self.ui.pb_mono_label.clicked.connect(self.analysis_mono_label_click)
 
     def analysis_half_full_label_click(self):
-        LabelTool.analysis_label(is_half_full=True)
+        message = LabelTool.analysis_label(is_half_full=True)
         QMessageBox.information(self,
                                 '>_<',
-                                '比對完成',
+                                message,
                                 QMessageBox.Yes)
 
     def analysis_mono_label_click(self):
-        LabelTool.analysis_label(is_mono=True)
+        message = LabelTool.analysis_label(is_mono=True)
         QMessageBox.information(self,
                                 '>_<',
-                                '比對完成',
+                                message,
                                 QMessageBox.Yes)
 
 

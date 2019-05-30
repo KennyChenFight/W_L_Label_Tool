@@ -1,30 +1,49 @@
 import os
-from shutil import copyfile
+from shutil import copyfile, rmtree
+import traceback
+
 
 class LabelTool:
     w_label_file_dir = 'w_label/'
-    w_p_file_dir = 'w_p/'
+    w_p_file_dir = 'compare/w_p/'
     l_label_file_dir = 'l_label/'
-    l_p_file_dir = 'l_p/'
+    l_p_file_dir = 'compare/l_p/'
+    txt_p_file_dir = 'compare/txt/'
+    wav_p_file_dir = 'compare/wav/'
+    txt_o_file_dir = 'txt/'
+    wav_o_file_dir = 'wav/'
     analysis_file = 'label_analysis.txt'
+    compare_dir = 'compare/'
+
 
     @classmethod
     def analysis_label(cls, is_mono=False, is_half_full=False):
         w_label_filepaths = os.listdir(cls.w_label_file_dir)
         l_label_filepaths = os.listdir(cls.l_label_file_dir)
 
+        message = ''
         if len(w_label_filepaths) != len(l_label_filepaths):
-            print('檔案數量不一致')
-            return
+            message = '檔案數量不一致'
         else:
             if is_mono:
-                w_pron_dict, l_pron_dict = cls.read_mono_file(w_label_filepaths, l_label_filepaths)
-                cls.compare_label(w_pron_dict, l_pron_dict)
+                try:
+                    w_pron_dict, l_pron_dict = cls.read_mono_file(w_label_filepaths, l_label_filepaths)
+                    cls.compare_label(w_pron_dict, l_pron_dict)
+                    message = '比對完成'
+                except Exception as e:
+                    print(e)
+                    traceback.print_exc()
+                    message = '比對失敗'
             elif is_half_full:
-                w_pron_dict, l_pron_dict = cls.read_half_full_file(w_label_filepaths, l_label_filepaths)
-                cls.compare_label(w_pron_dict, l_pron_dict)
-            else:
-                print('choose file type')
+                try:
+                    w_pron_dict, l_pron_dict = cls.read_half_full_file(w_label_filepaths, l_label_filepaths)
+                    cls.compare_label(w_pron_dict, l_pron_dict)
+                    message = '比對完成'
+                except Exception as e:
+                    print(e)
+                    traceback.print_exc()
+                    message = '比對失敗'
+        return message
 
     @classmethod
     def read_mono_file(cls, w_label_filepaths, l_label_filepaths):
@@ -100,14 +119,31 @@ class LabelTool:
                 compare_message[filename] = compare
 
         print(compare_message)
+        cls.check_default_dir_has_odd_data()
         cls.copy_problem_file(compare_message)
+        cls.copy_txt_and_wav_file(compare_message)
         cls.write_compare_message(compare_message)
+
+    @classmethod
+    def check_default_dir_has_odd_data(cls):
+        for dir_path, _, _ in os.walk(cls.compare_dir):
+            if os.listdir(dir_path) and dir_path != cls.compare_dir:
+                rmtree(dir_path)
+                os.mkdir(dir_path)
 
     @classmethod
     def copy_problem_file(cls, compare_message):
         for filename, wrong_lines in compare_message.items():
             copyfile(cls.w_label_file_dir + filename, cls.w_p_file_dir + filename)
             copyfile(cls.l_label_file_dir + filename, cls.l_p_file_dir + filename)
+
+    @classmethod
+    def copy_txt_and_wav_file(cls, compare_message):
+        for filename, _ in compare_message.items():
+            txt_filename = filename.replace('.lab', '.txt')
+            wav_filename = filename.replace('.lab', '.wav')
+            copyfile(cls.txt_o_file_dir + txt_filename, cls.txt_p_file_dir + txt_filename)
+            copyfile(cls.wav_o_file_dir + wav_filename, cls.wav_p_file_dir + wav_filename)
 
     @classmethod
     def write_compare_message(cls, compare_message):

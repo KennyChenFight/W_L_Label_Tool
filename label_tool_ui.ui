@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>664</width>
-    <height>492</height>
+    <width>659</width>
+    <height>562</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="pb_half_full_label">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>290</y>
-      <width>141</width>
-      <height>61</height>
+      <x>330</x>
+      <y>310</y>
+      <width>231</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -38,10 +38,10 @@
    <widget class="QPushButton" name="pb_mono_label">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>290</y>
-      <width>141</width>
-      <height>61</height>
+      <x>40</x>
+      <y>310</y>
+      <width>251</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -81,27 +81,6 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>190</y>
-      <width>281</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>微軟正黑體</family>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>linux的label資料夾位置: w_label/</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
       <y>160</y>
       <width>281</width>
       <height>21</height>
@@ -116,15 +95,15 @@
      </font>
     </property>
     <property name="text">
-     <string>windows的錯誤資料夾位置: w_p/</string>
+     <string>linux的label資料夾位置: l_label/</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>220</y>
-      <width>281</width>
+      <x>180</x>
+      <y>390</y>
+      <width>341</width>
       <height>21</height>
      </rect>
     </property>
@@ -137,28 +116,7 @@
      </font>
     </property>
     <property name="text">
-     <string>linux的錯誤資料夾位置: l_p/</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>250</y>
-      <width>311</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>微軟正黑體</family>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>比對label結果檔案位置: label_analysis.txt</string>
+     <string>※ windows的錯誤資料夾位置: compare/w_p/</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -166,7 +124,7 @@
      <rect>
       <x>240</x>
       <y>20</y>
-      <width>281</width>
+      <width>191</width>
       <height>41</height>
      </rect>
     </property>
@@ -185,7 +143,7 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>180</x>
       <y>70</y>
       <width>301</width>
       <height>21</height>
@@ -206,7 +164,7 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>180</x>
       <y>100</y>
       <width>281</width>
       <height>21</height>
@@ -224,13 +182,181 @@
      <string>2.兩邊label檔案數量需相同</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>190</y>
+      <width>281</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>3.請放置txt檔案到規定位置</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>250</y>
+      <width>281</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>4.請放置wav檔案到規定位置</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>220</y>
+      <width>281</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>txt資料夾位置: txt/</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>270</y>
+      <width>281</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>wav資料夾位置: wav/</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>410</y>
+      <width>341</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>※ linux的錯誤資料夾位置: compare/l_p/</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>430</y>
+      <width>341</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>※ txt的錯誤資料夾位置: compare/txt/</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>450</y>
+      <width>341</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>※ wav的錯誤資料夾位置: compare/wav/</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>470</y>
+      <width>341</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>※ 比對label結果檔案位置: label_analysis.txt</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>664</width>
+     <width>659</width>
      <height>22</height>
     </rect>
    </property>
