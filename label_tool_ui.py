@@ -12,6 +12,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(659, 562)
+        MainWindow.setFixedSize(659, 562)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pb_half_full_label = QtWidgets.QPushButton(self.centralwidget)
