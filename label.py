@@ -15,7 +15,7 @@ class LabelTool:
     analysis_file = 'label_analysis.txt'
     compare_dir = 'compare/'
 
-
+    # 分析w_lab與l_lab每個檔案不同的地方，並擷取檔案出來
     @classmethod
     def analysis_label(cls, is_mono=False, is_half_full=False):
         w_label_filepaths = os.listdir(cls.w_label_file_dir)
@@ -45,6 +45,7 @@ class LabelTool:
                     message = '比對失敗'
         return message
 
+    # 讀取w及l的mono lab檔案
     @classmethod
     def read_mono_file(cls, w_label_filepaths, l_label_filepaths):
         w_pron_dict = {}
@@ -69,6 +70,7 @@ class LabelTool:
         print(l_pron_dict)
         return w_pron_dict, l_pron_dict
 
+    # 讀取w及l的half_full lab檔案
     @classmethod
     def read_half_full_file(cls, w_label_filepaths, l_label_filepaths):
         w_pron_dict = {}
@@ -96,6 +98,7 @@ class LabelTool:
         print(l_pron_dict)
         return w_pron_dict, l_pron_dict
 
+    # 比較W及L的lab檔案，拼音不同的行數挑出來
     @classmethod
     def compare_label(cls, w_pron_dict, l_pron_dict):
         compare_message = {}
@@ -124,6 +127,7 @@ class LabelTool:
         cls.copy_txt_and_wav_file(compare_message)
         cls.write_compare_message(compare_message)
 
+    # 檢查預設的資料夾有無舊的label檔案，有的話就刪除
     @classmethod
     def check_default_dir_has_odd_data(cls):
         for dir_path, _, _ in os.walk(cls.compare_dir):
@@ -131,12 +135,14 @@ class LabelTool:
                 rmtree(dir_path)
                 os.mkdir(dir_path)
 
+    # 將挑出來的錯誤lab檔案複製到對應的資料夾裡
     @classmethod
     def copy_problem_file(cls, compare_message):
         for filename, wrong_lines in compare_message.items():
             copyfile(cls.w_label_file_dir + filename, cls.w_p_file_dir + filename)
             copyfile(cls.l_label_file_dir + filename, cls.l_p_file_dir + filename)
 
+    # 將錯誤的txt跟wav複製到對應的資料夾裡
     @classmethod
     def copy_txt_and_wav_file(cls, compare_message):
         for filename, _ in compare_message.items():
@@ -145,6 +151,7 @@ class LabelTool:
             copyfile(cls.txt_o_file_dir + txt_filename, cls.txt_p_file_dir + txt_filename)
             copyfile(cls.wav_o_file_dir + wav_filename, cls.wav_p_file_dir + wav_filename)
 
+    # 輸出label比較訊息，挑出錯誤的行數
     @classmethod
     def write_compare_message(cls, compare_message):
         with open(cls.analysis_file, 'w', encoding='utf-8') as f:
